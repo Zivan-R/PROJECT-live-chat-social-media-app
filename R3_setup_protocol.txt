@@ -1,0 +1,269 @@
+Install Python if needed
+(Recommended) Install Git Bash for Windows
+
+********** FRONT END SETUP **********
+
+**IF CLONED PROJECT
+    npm install (Like Python's requirements.txt, package.json tracks all dependencies. This will reinstall them)
+
+**ELSE
+
+Install Node.js using nvm
+    Install nvm if needed
+
+    Install Node
+        bash
+
+        nvm install node (Latest version)
+        (OR)
+        nvm install 14.7.0 (for specific version)
+
+    You can list available locally versions using
+        bash
+
+        nvm list 
+        
+        (Use nvm ls-remote to see every version available to download and install)
+
+    Use node if in new shell
+        bash
+
+        nvm use node (OR <version-number>)
+    
+    You can setup a default
+        bash
+
+        nvm alias default <version-number>
+    
+    Verify current Node.js version
+        bash
+
+        node -v
+
+INSTALL VUE3 AND CREATE NEW PROJECT
+    cd into root folder
+        cd R3Messenger
+    
+    init vue
+        npm init vue@Latest
+    
+        Ok to proceed? y
+        Project name: vue_frontend
+        Add TypeScript? No
+        Add JSX Support? No
+        Add Vue Router? Yes     # Loads everything at once without having to refresh
+        Add Pinia? Yes      # So we can save user etc.. in browser
+        Add Vitest for Unit testing? No
+        Add an End-to-End testing solution? No
+        Add ESLint? No
+    
+    get in vue folder
+        cd vue_frontend
+
+        npm install
+
+    run local server to test if everything is working
+        npm run dev  
+
+AXIOS
+    install
+        npm install axios
+    
+    go to vue's main.js and add
+        import axios from 'axios'
+
+        axios.defaults.baseURL = 'http://127.0.0.1:8000' (default Django address)
+
+        (add to app.use(router)) => app.use(router, axios)
+
+TAILWIND CSS
+    install
+        npm install -D tailwindcss postcss autoprefixer
+        npx tailwindcss init -p
+    
+    configure template paths
+        (in tailwind.config.js)
+        content: [
+            "./index.html",
+            "./src/**/*.{vue,js,ts,jsx,tsx}",
+        ]
+    
+    in src.assets erase everything except main.css and edit it. Remove everything and add
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        (May encounter error with VSCODE. Ignore it)
+
+    test to see if Tailwind is installed
+        (in App.vue add in nav)
+        <h1 class="text-emerald-500">Hello, World!!</h1>
+
+        PS: If error in App.vue due to <RouterView>, just add an outer div and put everything in it
+
+********** BACK END SETUP **********
+
+Setup .venv
+    Create .venv
+        bash
+
+        python -m venv .venv
+    Activate .venv (Git bash in Windows)
+        bash
+
+        source .venv/Scripts/Activate
+    Deactivate
+        bash
+
+        deactivate
+
+***IF USING requirements.txt
+    bash
+
+    pip install -r requirements.txt
+
+    BONUS: Generate requirements.txt
+        bash
+
+        pip freeze > requirements.txt
+
+Install Django
+    pip install Django
+
+Install Django Rest Framework
+    pip install djangorestframework
+
+Install Django rest framework simpleJWT
+    pip install djangorestframework-simplejwt
+
+Install Pillow
+    pip install pillow
+
+Create Django Project
+    django-admin startproject django_backend
+    cd django_backend
+
+Project setup
+    config jwt
+        (in settings.py)
+        (ADD TO INSTALLED_APPS)
+            'rest_framework',
+            'rest_framework_simplejwt',
+        (ADD)
+            from datetime import timedelta
+
+            SIMPLE_JWT = {
+                'ACCESS_TOKEN_LIFETIME': timedelta(days=30),
+                'REFRESH_TOKEN_LIFETIME': timedelta(days=180),
+                'ROTATE_REFRESH_TOKENS': False,
+            }
+
+    config drf
+        (in settings.py)
+        REST_FRAMEWORK = {
+            'DEFAULT_AUTHENTICATION_CLASSES': (
+                'rest_framework_simplejwt.authentication.JWTAuthentication',    # sets default to JWT
+            ),
+            'DEFAULT_PERMISSION_CLASSES': (
+                'rest_framework.permissions.IsAuthenticated',   # Must be authenticated to access backend
+            )
+        }
+
+    config csrf and cors (Security)
+        pip install django-cors-headers
+
+        (in settings.py)
+        CORS_ALLOWED_ORIGINS = [
+            "http://localhost:5173", # put frontend server address here Found in Local: when running frontend server
+        ]
+
+        # CORS_ALLOW_ALL_ORIGINS = True (Commented. Will allow everything.)
+
+        CSRF_TRUSTED_ORIGINS = [
+            "http://localhost:5173",    
+        ]
+
+        (ADD TO INSTALLED_APPS)
+        'corsheaders',
+
+        (ADD TO MIDDLEWARE)
+        'corsheaders.middleware.CorsMiddleware',    # use before the common middleware
+    
+Create app for custom usermodel (Use uuid)
+    python manage.py startapp account
+
+setup account.models (Modify as needed)
+    import uuid
+    from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
+    from django.utils import timezone
+
+    class CustomUserManager(UserManager):
+        def _create_user(self, name, email, password, **extra_fields):
+            if not email:
+                raise ValueError("You have not provided a valid e-mail address")
+        
+            email = self.normalize_email(email)
+            user = self.model(email=email, name=name, **extra_fields)
+            user.set_password(password)
+            user.save(using=self._db)
+            
+            return user
+        
+        def create_user(self, name=None, email=None, password=None, **extra_fields):
+            extra_fields.setdefault('is_staff', False)
+            extra_fields.setdefault('is_superuser', False)
+            return self._create_user(name, email, password, **extra_fields)
+        
+        def create_superuser(self, name=None, email=None, password=None, **extra_fields):
+            extra_fields.setdefault('is_staff', True)
+            extra_fields.setdefault('is_superuser', True)
+            return self._create_user(name, email, password, **extra_fields)
+
+    class User(AbstractBaseUser, PermissionsMixin):
+        id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+        email = models.EmailField(unique=True)
+        name = models.CharField(max_length=255, blank=True, default='')
+        avatar = models.ImageField(upload_to='avatars', blank=True, null=True)
+        
+        is_active = models.BooleanField(default=True)
+        is_superuser = models.BooleanField(default=False)
+        is_staff = models.BooleanField(default=False)
+        
+        date_joined = models.DateTimeField(default=timezone.now)
+        last_login = models.DateTimeField(blank=True, null=True)
+        
+        objects = CustomUserManager()
+        
+        USERNAME_FIELD = 'email'
+        EMAIL_FIELD = 'email'
+        REQUIRED_FIELDS = ['name']      # Add name to required fields so it will ask for name when creating superuser with terminal (won't work otherwise)
+
+Tell Django to use custom user as default
+    (in Settings.py)
+    (ADD)
+        AUTH_USER_MODEL = 'account.User'
+    (ADD IN INSTALLED_APPS)
+        'account',
+
+Migrations
+    python manage.py makemigrations
+
+    python manage.py migrate
+
+Create and write account.urls (urls.py)
+(ADD)
+    from django.urls import path
+    from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+    urlpatterns= [
+        path('login/', TokenObtainPairView.as_view(), name='token_obtain'),
+        path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    ]
+
+Update django_backend.urls
+    add import include from django.urls
+    add path('api/', include('account.urls'))
+
+
+
+

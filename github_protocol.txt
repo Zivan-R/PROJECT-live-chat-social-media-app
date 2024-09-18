@@ -1,0 +1,253 @@
+********************************************* BASICS *********************************************
+
+1. Install Git
+
+    Download and install Git
+    During installation, choose the default options unless you have specific preferences.
+
+2. Configure Git
+
+    Open Git Bash and run these commands to set your username and email (these will be tied to your commits):
+
+        bash
+
+        git config --global user.name "Your Name"
+        git config --global user.email "your-email@example.com"
+    
+    PS: Best to use Github's noreply email
+
+3. Create a GitHub Account
+
+    Go to GitHub and sign up for an account if you don't have one.
+    Confirm your email.
+
+4. Generate an SSH Key
+
+    Generate an SSH key to securely connect to GitHub without needing to enter your password every time.
+
+        bash
+
+        ssh-keygen -t ed25519 -C "your-email@example.com"
+
+            Press Enter to save the key to the default location.
+            Press Enter twice to skip the passphrase (or set one if you want more security).
+
+5. Add SSH Key to GitHub
+
+    Copy your public SSH key to the clipboard:
+
+        bash
+
+        cat ~/.ssh/id_ed25519.pub
+
+    Go to GitHub's SSH and GPG keys settings.
+    Click New SSH key, paste the key, and give it a title.
+
+6. Test the SSH Connection
+
+    Test if the SSH key works:
+
+        bash
+
+        ssh -T git@github.com
+
+    You should see a message like:
+
+        bash
+
+        Hi username! You've successfully authenticated...
+
+7. Create a New Project Folder
+
+    In Git Bash, navigate to where you want to create the project folder and run:
+
+        bash
+
+        mkdir my-project
+        cd my-project
+
+8. Initialize Git in the Project Folder
+
+    bash
+
+    git init
+
+9. Create a Repository on GitHub
+
+    Go to GitHub and click New.
+    Create a new repository (leave it empty without a README for now).
+
+10. Connect Local Repo to GitHub Repo
+
+    Get the GitHub repository URL (SSH URL) and connect it:
+
+        bash
+
+        git remote add origin git@github.com:your-username/your-repo-name.git
+
+7-8-9-10 Bis. Do it backwards with github
+    
+    Create a new repo in Github, copy repo URL
+    Clone project locally
+        bash
+
+        git clone repoUrl
+        cd clonedFolder
+
+11. Create Files & Commit
+
+    Create files or add your project. Then, stage, commit, and push:
+
+        bash
+
+        git add .
+        git commit -m "Initial commit"
+
+12. Push to GitHub
+
+    bash
+
+    git push -u origin master
+
+    /!\ Can be master or main! how to check:
+    bash
+
+    git branch
+
+    To rename if you want:
+        bash
+
+        git branch -M master
+
+You're all set! 🎉 Your project should now be on GitHub.
+
+Summary:
+
+    Install Git
+    Configure Git (username and email)
+    Create GitHub account
+    Generate & add SSH key to GitHub
+    Test SSH connection
+    Create project folder
+    Initialize Git in the project
+    Create GitHub repo
+    Link local repo to GitHub repo
+    Add files, commit, and push to GitHub
+
+
+********************************************* WORKFLOW *********************************************
+
+**1. Create Branches
+
+    - Clone the Repository (if you haven't already):
+
+        bash
+
+        git clone git@github.com:your-username/your-repo-name.git
+        cd your-repo-name
+
+    - Create and Switch to Front-End Branch:
+
+        bash
+
+        git checkout -b frontend
+
+    - Create and Switch to Back-End Branch:
+
+        bash
+
+        git checkout -b backend
+
+    - Push the Branches to GitHub:
+
+        bash
+
+        git push -u origin frontend
+        git push -u origin backend
+
+**2. Work on Your Branches
+
+    - Switch to the Appropriate Branch for Work:
+        For front-end:
+
+            bash
+
+            git checkout frontend
+
+        For back-end:
+
+            bash
+
+            git checkout backend
+
+    - Make Changes and Commit:
+
+        bash
+
+        git add .
+        git commit -m "Description of changes"
+
+    - Push Changes to GitHub:
+
+        bash
+
+        git push
+
+**3. Create and Manage Pull Requests (PRs)
+
+    - Go to GitHub Repository:
+        - Navigate to your repository on GitHub.
+
+    - Create a Pull Request:
+        - Go to the "Pull Requests" tab.
+        - Click "New pull request".
+        - Choose the base branch (usually main or master) and compare it with your feature branch (e.g., frontend or backend).
+
+    - Review and Merge:
+        - Add a title and description for your pull request.
+        - Assign reviewers (team members who will review the code).
+        - Click "Create pull request".
+        - Once approved, merge the pull request:
+            - Click "Merge pull request".
+            - Confirm the merge.
+
+    - Pull the Latest Changes:
+        - After merging, ensure your local branches are up-to-date:
+
+            bash
+
+            git checkout main  # or master
+            git pull
+
+**4. Handling Conflicts
+
+    - If there are conflicts, GitHub will notify you when you attempt to merge.
+        - Resolve conflicts locally:
+
+            bash
+
+            git checkout frontend  # or backend
+            git pull origin main  # or master
+
+        - Resolve any conflicts in your files.
+        - Add and commit the resolved files:
+
+            bash
+
+            git add .
+            git commit -m "Resolved merge conflicts"
+
+        - Push the resolved branch:
+
+            bash
+
+            git push
+
+Summary:
+
+    Create branches: frontend and backend.
+    Work on branches: Commit and push changes regularly.
+    Create pull requests: Review and merge them into the main branch.
+    Handle conflicts: Resolve any merge conflicts that arise.
+
+This setup helps manage simultaneous work effectively and ensures smooth integration of changes.
