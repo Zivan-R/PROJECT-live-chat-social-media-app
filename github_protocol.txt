@@ -193,6 +193,15 @@ Summary:
 
         git push origin <branch-name>
 
+    - Use selective Merge (ex: only merge vue_frontend folder into main)
+
+        bash
+
+        git checkout main -> Switch to main branch
+        git checkout frontend -- vue_frontend/ -> checks out only vue_frontend/ folder from frontend branch and stages it for commit
+        git commit -m "Merge frontend changes from frontend"
+        git push origin main -> finally push to Github
+
     - Remove from repo history:
         bash
 
