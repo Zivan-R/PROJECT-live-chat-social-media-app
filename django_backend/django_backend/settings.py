@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = 'account.User'    # Tells Django to use the custom User instead of the default one
 
 # jwt settings
 SIMPLE_JWT = {
@@ -45,6 +45,16 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',   # Must be authenticated to access backend
     )
+}
+
+# redis
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [("127.0.0.1", 6379)],  # Ensure Redis is running locally on port 6379
+        },
+    },
 }
 
 ## SECURITY ##
@@ -68,9 +78,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'account',  # new
     'rest_framework',   # New
     'rest_framework_simplejwt', # New
     'corsheaders',   # New
+    'channels',     # New
     
 ]
 
@@ -104,6 +116,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'django_backend.wsgi.application'
+
+ASGI_APPLICATION = 'django_backend.asgi.application'
 
 
 # Database
