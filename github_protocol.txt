@@ -202,6 +202,13 @@ Summary:
         git commit -m "Merge frontend changes from frontend"
         git push origin main -> finally push to Github
 
+    - Revert commit
+        bash
+
+        git log -> to get a log of commits and get the commit-hash (commit id)
+        git revert <commit-hash> -> Makes a commit that undoes the selected commit
+        git push origin <branch> -> updates Github repo
+
     - Remove from repo history:
         bash
 
