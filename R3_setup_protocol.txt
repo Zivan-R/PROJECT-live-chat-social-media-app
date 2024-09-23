@@ -18,6 +18,7 @@ Dependencies:
         SimpleJWT
         CORS Headers
         Pillow
+        Docker (to run redis)
 
 
 
@@ -154,7 +155,7 @@ Setup .venv
         pip freeze > requirements.txt
 
 Install Django
-    pip install Django
+    pip install django
 
 Install Django Rest Framework
     pip install djangorestframework
@@ -164,6 +165,21 @@ Install Django rest framework simpleJWT
 
 Install Pillow
     pip install pillow
+
+Install django-channels
+    pip install channels
+
+Install channel-redis
+    pip install channels-redis
+
+Install Socket.io (pyhon server-side)
+    pip install python-socketio
+
+Install Daphne
+    pip install daphne
+
+Install cors-headers
+    pip install django-cors-headers
 
 Create Django Project
     django-admin startproject django_backend
@@ -196,7 +212,6 @@ Project setup
         }
 
     config csrf and cors (Security)
-        pip install django-cors-headers
 
         (in settings.py)
         CORS_ALLOWED_ORIGINS = [
