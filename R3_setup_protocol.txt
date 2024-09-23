@@ -1,3 +1,26 @@
+Dependencies:
+    Front end:
+        VUE3
+        Vue Router
+        Pinia
+        Axios
+        Socket.IO-client
+        Vite
+        TailwindCSS
+
+    Back end:
+        Django
+        Django rest framework
+        Django channels
+        channel-redis
+        Socket.IO (Python server-side)
+        redis
+        SimpleJWT
+        CORS Headers
+        Pillow
+
+
+
 Install Python if needed
 (Recommended) Install Git Bash for Windows
 
