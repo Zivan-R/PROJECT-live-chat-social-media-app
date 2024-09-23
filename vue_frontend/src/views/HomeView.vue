@@ -1,5 +1,9 @@
+<script setup>
+import TheWelcome from '../components/TheWelcome.vue'
+</script>
+
 <template>
   <main>
-    <h1>Welcome to R3 Messenger</h1>
+    <TheWelcome />
   </main>
 </template>
