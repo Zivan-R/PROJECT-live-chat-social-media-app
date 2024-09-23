@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .forms import SignupForm
+from .models import FriendshipRequest, User
+from .serializers import UserSerializer, FriendshipRequestSerializer
 
 @api_view(['GET'])
 def me(request):
@@ -36,3 +38,7 @@ def signup(request):
         return Response({'message': 'user created successfully'}, status=status.HTTP_201_CREATED)
     else:
         return Response({'message': 'error', 'errors': form.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["GET"])
+def friends(request, pk):
+    user = User.objects.
