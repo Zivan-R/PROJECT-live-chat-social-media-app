@@ -68,7 +68,7 @@ INSTALL VUE3 AND CREATE NEW PROJECT
         cd R3Messenger
     
     init vue
-        npm init vue@Latest
+        npm init vue@latest
     
         Ok to proceed? y
         Project name: vue_frontend
@@ -123,6 +123,9 @@ TAILWIND CSS
         <h1 class="text-emerald-500">Hello, World!!</h1>
 
         PS: If error in App.vue due to <RouterView>, just add an outer div and put everything in it
+
+SOCKET.IO-client
+    npm install socket.io-client
 
 ********** BACK END SETUP **********
 
