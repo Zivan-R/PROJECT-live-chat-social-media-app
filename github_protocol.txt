@@ -184,14 +184,26 @@ Summary:
 
         bash
 
-        git add .
+        git add <folder-you-work-in>
         git commit -m "Description of changes"
 
     - Push Changes to GitHub:
 
         bash
 
-        git push
+        git push origin <branch-name>
+
+    - Remove from repo history:
+        bash
+
+        git rm --cached <thing-to-remove>
+        git commit -m "Remove thing-to-remove from version control"
+
+        ** IF ADDED TO .gitignore and gets fatal: pathspec 'thing-to-remove' did not match any files (folder)**
+        git ls-files | grep thing-to-remove
+        git rm -r --cached $(git ls-files | grep thing-to-remove)
+        git commit -m "Remove thing-to-remove from version control"
+        git push origin <branch name>
 
 **3. Create and Manage Pull Requests (PRs)
 
