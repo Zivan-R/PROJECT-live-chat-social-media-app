@@ -4,7 +4,6 @@ import uuid # unique identifications for users instead of simple increasing ints
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager  # new to overwrite User model and create our own
 from django.utils import timezone # new (user lost login etc..)
 
-
 # Create your models here.
 
 class CustomUserManager(UserManager):
