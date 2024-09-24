@@ -172,13 +172,13 @@ Summary:
 
             bash
 
-            git checkout frontend
+            git switch frontend (or git checkout frontend)
 
         For back-end:
 
             bash
 
-            git checkout backend
+            git switch backend (or git checkout backend)
 
     - Make Changes and Commit:
 
@@ -192,22 +192,24 @@ Summary:
         bash
 
         git push origin <branch-name>
-
-    - Use selective Merge (ex: only merge vue_frontend folder into main)
+    
+    - Update a specific folder without affecting your local copy of the other folders
+    SCENARIO: backend team merged first into main, frontend team wants to pull backend team's work without losing their local copy
 
         bash
 
-        git checkout main -> Switch to main branch
-        git checkout frontend -- vue_frontend/ -> checks out only vue_frontend/ folder from frontend branch and stages it for commit
-        git commit -m "Merge frontend changes from frontend"
-        git push origin main -> finally push to Github
-
-    - Revert commit
+        git switch frontend -> goes into frontend branch
+        git fetch origin main -> retreive latest commits from Github's main branch
+        git checkout origin/main -- backend/ -> Updates only the backend/ directory from origin/main branch into the current branch (frontend)
+    
+    - Save untracked files temporarly
         bash
 
-        git log -> to get a log of commits and get the commit-hash (commit id)
-        git revert <commit-hash> -> Makes a commit that undoes the selected commit
-        git push origin <branch> -> updates Github repo
+        git stash push -u -> Saves current state of folder temporarly (including untracked files)
+        git switch <other-branch>
+        *Work on branch, commit and push changes*
+        git switch <my-branch>
+        git stash pop -> Retrieve stashed changes
 
     - Remove from repo history:
         bash
@@ -220,6 +222,7 @@ Summary:
         git rm -r --cached $(git ls-files | grep thing-to-remove)
         git commit -m "Remove thing-to-remove from version control"
         git push origin <branch name>
+
 
 **3. Create and Manage Pull Requests (PRs)
 
