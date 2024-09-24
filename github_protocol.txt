@@ -203,6 +203,7 @@ Summary:
         git checkout origin/main -- backend/ -> Updates only the backend/ directory from origin/main branch into the current branch (frontend)
     
     - Save untracked files temporarly
+
         bash
 
         git stash push -u -> Saves current state of folder temporarly (including untracked files)
