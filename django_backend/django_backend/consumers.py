@@ -44,15 +44,15 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
         else:   # General chat
             await self.save_public_message(message_body, user)
         
-        # Broadcast message to room
-        await self.channel_layer.group_send(
-            self.room_group_name,
-            {
-                'type': 'chat_message',
-                'message': message_body,
-                'sender': user.name
-            }
-        )
+            # Broadcast message to room
+            await self.channel_layer.group_send(
+                self.room_group_name,
+                {
+                    'type': 'chat_message',
+                    'message': message_body,
+                    'sender': user.name
+                }
+            )
     
     async def chat_message(self, event):
         # Send message to WebSocket
@@ -72,12 +72,12 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
         }))
     
     @database_sync_to_async
-    async def save_private_message(self, message_body, sender, recipient):
+    def save_private_message(self, message_body, sender, recipient):
         print(f'TEST (private) This is the message object to be saved: body={message_body}, created_by={sender}, sent_to_private={recipient}')
     
     @database_sync_to_async    
-    async def save_public_message(self, message_body, sender):
-        chat_room = await self.get_chatroom_by_name(self.room_name)
+    def save_public_message(self, message_body, sender):
+        chat_room = self.get_chatroom_by_name(self.room_name)
         
         print(f"TEST (public) This is the message object to be saved: body={message_body}, created_by={sender}, sent_to_chatroom={chat_room}")
     

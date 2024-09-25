@@ -18,14 +18,23 @@ from django.core.asgi import get_asgi_application
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
 from django_backend import routing
+from .sio_app import sio
+from socketio import ASGIApp
 
+django_asgi_app = get_asgi_application()
 
+application = ASGIApp(sio, django_asgi_app)
 
-application = ProtocolTypeRouter({
-    "http": get_asgi_application(),
-    "websocket": AuthMiddlewareStack(
-        URLRouter(
-            routing.websocket_urlpatterns
-        )
-    ),
-})
+# Websockets / Channel implementation
+
+# application = ProtocolTypeRouter({
+#     "http": get_asgi_application(),
+#     "websocket": AuthMiddlewareStack(
+#         URLRouter(
+#             routing.websocket_urlpatterns
+#         )
+#     ),
+# })
+
+# # Attach Socket.IO app to ASGI app
+# application = ASGIApp(sio, application)
