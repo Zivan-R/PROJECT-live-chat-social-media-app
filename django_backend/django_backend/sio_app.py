@@ -33,7 +33,7 @@ def save_message(message_body, user, chat_room):
     )
     
 @sio.event
-async def send_public_message(sid, data):
+async def send_public_message(sid, data, callback):
     try:   
         user_id = data['user_id']
         message_body = data['message']
@@ -43,16 +43,30 @@ async def send_public_message(sid, data):
         user = await get_user_by_id(user_id)
         chatroom = await get_general_chatroom()
         
-        save_public_message(user, message_body, chatroom)
+        await save_public_message(user, message_body, chatroom)
         
+        callback({
+            'status': 'ok',
+            'data': {
+                'message': message_body,
+                'sender': user.name
+            }
+        })
         # Broadcast message to the room
-        sio.emit('chat_message', {
+        await sio.emit('chat_message', {
             'message': message_body,
             'sender': user.name,
-        })
+        }, room=chatroom)
         
-    except User.DoesNotExist:
-        print(f"User with ID {user_id} does not exist.")
+        
+    # except User.DoesNotExist:
+    #     print(f"User with ID {user_id} does not exist.")
+    except Exception as e:
+        print(e)
+        callback({
+            'status': 'error',
+            'message': str(e)
+        })
     finally:
         close_old_connections()
         
