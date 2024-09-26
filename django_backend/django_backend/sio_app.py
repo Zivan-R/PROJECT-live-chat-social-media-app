@@ -1,4 +1,5 @@
 import socketio
+import asyncio
 from chat.models import Message, Chatroom
 from account.models import User
 from django.db import close_old_connections
@@ -8,11 +9,15 @@ from asgiref.sync import sync_to_async
 sio = socketio.AsyncServer(async_mode='asgi', cors_allowed_origins=['http://localhost:5173'])
 
 @sio.event
-def connect(sid, environ):
+async def connect(sid, environ):
     print(f"Client {sid} connected")
+    await sio.emit('chat_message', {
+        'body': 'Welcome to the chat!',
+        'sender': 'Server',
+    }, room="General")
     
 @sio.event
-def disconnect(sid):
+async def disconnect(sid):
     print(f"Client {sid} disconnected")
     
 # Helper functions to fetch user, chatroom and save messages
@@ -33,7 +38,7 @@ def save_message(message_body, user, chat_room):
     )
     
 @sio.event
-async def send_public_message(sid, data, callback):
+async def send_public_message(sid, data):
     try:   
         user_id = data['user_id']
         message_body = data['message']
@@ -41,32 +46,25 @@ async def send_public_message(sid, data, callback):
     
     
         user = await get_user_by_id(user_id)
+        print(f"debugging: user name = {user.name}")
         chatroom = await get_general_chatroom()
+        print(f"debugging: room name = {chatroom.name}")
         
-        await save_public_message(user, message_body, chatroom)
+        # save_public_message(user, message_body, chatroom)
         
-        callback({
-            'status': 'ok',
-            'data': {
-                'message': message_body,
-                'sender': user.name
-            }
-        })
         # Broadcast message to the room
+        print(f"Emitting message '{message_body}' from user {user_id} to room: {chatroom}")
+        print(f"Rooms for client {sid}: {sio.rooms(sid)}")
         await sio.emit('chat_message', {
-            'message': message_body,
+            'body': message_body,
             'sender': user.name,
-        }, room=chatroom)
+        }, room=chatroom.name)
         
         
     # except User.DoesNotExist:
     #     print(f"User with ID {user_id} does not exist.")
     except Exception as e:
         print(e)
-        callback({
-            'status': 'error',
-            'message': str(e)
-        })
     finally:
         close_old_connections()
         
@@ -84,7 +82,7 @@ def send_private_message(sid, data):
         save_private_message(sender, message_body, recipient)
         
         sio.emit('private_message', {
-            'message': message_body,
+            'body': message_body,
             'sender': sender.name,
             'recipient': recipient.name
         }, to=recipient_id)
@@ -94,10 +92,12 @@ def send_private_message(sid, data):
         close_old_connections()
         
 @sio.event
-def join_room(sid, data):
-    room_name = data.get('room_name', 'General')
-    sio.enter_room(sid, room_name)
-    print(f"Client {sid} joined {room_name}")
+async def join_room(sid, data):
+    room = data.get('room', 'General')
+    await sio.enter_room(sid, room)
+    # await asyncio.to_thread(sio.enter_room, sid, room)
+    print(f"Client {sid} joined {room}")
+    print(f"Rooms for client {sid}: {sio.rooms(sid)}")
     
 @sio.event
 def leave_room(sid, data):
@@ -111,5 +111,5 @@ def save_public_message(sender, message_body, chatroom):
     
 def save_private_message(sender, message_body, recipient):
     print(
-        f"TEST | Saved message to database: body={message_body}, created_by={sender}, sent_to_private={recipient}"
+        f"TEST | Saved message to database: body={message_body}, created_by={sender.name}, sent_to_private={recipient}"
     )
