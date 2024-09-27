@@ -2,7 +2,7 @@
     <div class="main-div">
         <div class="mb-6 flex items-center justify-between">
             <div class="flex items-center space-x-6">
-                <img src="https://i.pravatar.cc/300?img=70" class="w-[40px] rounded-full">
+                <img src="../assets/surprised_pikachu.png" class="w-[40px] rounded-full">
                 
                 <p>
                     <strong>
@@ -36,9 +36,13 @@
             </div>
             
             <div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"></path>
-                </svg>   
+                </svg>    -->
+                <form v-on:submit.prevent="deletePost(post.id)" method="post">
+                    <button class=" mr-0 py-3 px-3 bg-red-600 text-white text-sm rounded-lg">Delete</button>
+                </form>
+                
             </div>   
         </div>
     </div>
@@ -66,7 +70,23 @@ export default {
                 .catch(error => {
                     console.log('likePost error', error)
                 })
-        }
+        },
+
+        deletePost(id) {
+
+            axios
+                .post(`/api/posts/${id}/delete/`)
+                .then(response => {
+                    if (response.data.message == 'post deleted'){
+                        console.log('Post deleted')
+                        this.$emit('post-deleted', id)
+                    }
+                    
+                })
+                .catch(error => {
+                    console.log("error", error)
+                })
+        },
     },
 
     components: { RouterLink }

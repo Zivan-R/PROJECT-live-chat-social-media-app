@@ -6,6 +6,8 @@ import SearchView from '../views/SearchView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import FriendsView from '../views/FriendsView.vue'
 import PostView from '../views/PostView.vue'
+import GeneralChatView from '../views/GeneralChatView.vue'
+import { useUserStore } from '@/stores/user'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +16,12 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+    },
+    {
+      path: '/chat/general',
+      name: 'general-chat',
+      component: GeneralChatView,
+      // meta: { requiresAuth: true }
     },
     {
       path: '/signup',
@@ -55,5 +63,16 @@ const router = createRouter({
     }
   ]
 })
+
+// router.beforeEach((to, from, next) => {
+//   const userStore = useUserStore();
+//   const isAuthenticated = userStore.isAuthenticated;
+
+//   if (to.meta.requiresAuth && !isAuthenticated) {
+//     next({ name: 'login'});
+//   } else {
+//     next();
+//   }
+// });
 
 export default router

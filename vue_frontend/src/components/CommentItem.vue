@@ -2,7 +2,7 @@
     <div class="main-div">
         <div class="mb-2 flex items-center justify-between">
             <div class="flex items-center space-x-6">
-                <img src="https://i.pravatar.cc/300?img=70" class="w-[40px] rounded-full">
+                <img src="../assets/surprised_pikachu.png" class="w-[40px] rounded-full">
                 
                 <p>
                     <strong>

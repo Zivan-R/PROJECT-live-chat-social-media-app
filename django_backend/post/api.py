@@ -61,7 +61,7 @@ def post_like(request, pk):
         post.likes.add(like)
         post.save()
     
-        return JsonResponse({'message': 'Like created'})
+        return JsonResponse({'message': 'like created'})
     else:
         return JsonResponse({'message': 'post already liked'})
     
@@ -80,3 +80,15 @@ def post_create_comment(request, pk):
     serializer = CommentSerializer(comment)
     
     return JsonResponse(serializer.data, safe=False)
+
+@api_view(['POST'])
+def post_delete(request, pk):
+    try:
+        post = Post.objects.get(pk=pk)
+    except Post.DoesNotExist:
+        return JsonResponse({'message': 'Error, post not found'})
+    
+    post.delete()
+    
+    return JsonResponse({'message': 'post deleted'})
+    

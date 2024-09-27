@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 
 from account.models import User
+from django.utils.timesince import timesince
 
 # Create your models here.
 class Chatroom(models.Model):
@@ -28,3 +29,6 @@ class Message(models.Model):
         elif self.sent_to_chatroom:
             return f"Message from {self.created_by.name} in {self.sent_to_chatroom.name}: {self.body}"
         return "Message without anyone to send it to."
+    
+    def created_at_formatted(self):
+        return timesince(self.created_at)

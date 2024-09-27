@@ -59,10 +59,10 @@ def friends(request, pk):
 def send_friendship_request(request, pk): 
     user = User.objects.get(pk=pk)
     
-    check1 = FriendshipRequest.objects.filter(created_for=request.user).filter(created_by=user)    # Check for you
-    check2 = FriendshipRequest.objects.filter(created_for=user).filter(created_by=request.user)    #check other way around
+    check1 = FriendshipRequest.objects.filter(created_for=request.user).filter(created_by=user).exists()    # Check for you
+    check2 = FriendshipRequest.objects.filter(created_for=user).filter(created_by=request.user).exists()    #check other way around
     
-    if not check1 or not check2:
+    if not check1 and not check2:
         friendship_request = FriendshipRequest.objects.create(created_for=user, created_by=request.user)
     
         return JsonResponse({'user': UserSerializer(user).data, 'message': 'Friendship request created'})   # Vue was throwing an error because user wasn't sent. 
