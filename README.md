@@ -1,3 +1,4 @@
+### Note: It seems the version on Github is an old one, without the live chat. Fixing that soon
 # PROJECT: Social media app with a live chat [ENG/FR]
 
 ## Tech Stack:
