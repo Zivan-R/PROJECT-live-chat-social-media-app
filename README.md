@@ -1,4 +1,5 @@
-### Note: It seems the version on Github is an old one, without the live chat. Fixing that soon
+### Note: This is an old version, without the live chat, as earlier versions have been lost. The app is being rewritten and migrated to a microservices architecture
+
 # PROJECT: Social media app with a live chat [ENG/FR]
 
 ## Tech Stack:
