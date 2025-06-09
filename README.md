@@ -1,4 +1,4 @@
-### Note: This is an old version, without the live chat, as earlier versions have been lost. The app is being rewritten and migrated to a microservices architecture
+### Note: This is an old version, without the live chat... Later versions have been lost. The app is being rewritten and migrated to a microservices architecture
 
 # PROJECT: Social media app with a live chat [ENG/FR]
 
