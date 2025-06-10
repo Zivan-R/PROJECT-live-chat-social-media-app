@@ -4,7 +4,7 @@
         <!-- left -->
         <div class="main-left col-span-1">
             <div class="p-4 bg-white border border-gray-200 text-center rounded-lg">
-                <img src="https://i.pravatar.cc/300?img=70" class="mb-6 rounded-full">
+                <img src="../assets/surprised_pikachu.png" class="mb-6 rounded-full">
                 
                 <p><strong>{{ user.name }}</strong></p>
 
@@ -29,7 +29,7 @@
                         v-for="friendshipRequest in friendshipRequests"
                         v-bind:key="friendshipRequest.id"
                     >
-                        <img src="https://i.pravatar.cc/100?img=70" class="mb-6 mx-auto rounded-full">
+                        <img src="../assets/surprised_pikachu.png" class="mb-6 mx-auto rounded-full">
                     
                         <p>
                             <strong>
@@ -61,7 +61,7 @@
                     v-for="friend in friends"
                     v-bind:key="friend.id"
                 >
-                    <img src="https://i.pravatar.cc/300?img=70" class="mb-6 rounded-full">
+                    <img src="../assets/surprised_pikachu.png" class="mb-6 rounded-full">
                 
                     <p>
                         <strong>
@@ -147,6 +147,8 @@ export default {
 
                     if (response.data.message === 'Friendship request updated') {
                         this.toastStore.showToast(5000, 'Friendship request was updated successfuly', 'bg-emerald-300')
+
+                        this.friendshipRequests = this.friendshipRequests.filter(request => request.created_by.id !== pk)
                     }
                 })
                 .catch(error => {

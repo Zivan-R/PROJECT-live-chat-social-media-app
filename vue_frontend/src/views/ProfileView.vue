@@ -4,7 +4,7 @@
         <!-- left -->
         <div class="main-left col-span-1">
             <div class="p-4 bg-white border border-gray-200 text-center rounded-lg">
-                <img src="https://i.pravatar.cc/300?img=70" class="mb-6 rounded-full">
+                <img src="../assets/surprised_pikachu.png" class="mb-6 rounded-full">
                 
                 <p><strong>{{ user?.name }}</strong></p>
 
@@ -20,7 +20,7 @@
                         v-if="userStore.user.id !== user.id"
                         class="inline-block py-4 px-3 bg-purple-600 
                         text-white text-xs rounded-lg"
-                        >Send friend request</button>
+                        @click="sendFriendshipRequest">Send friend request</button>
 
                     <button
                         v-if="userStore.user.id === user.id"
@@ -55,7 +55,7 @@
                 v-for="post in posts"
                 v-bind:key="post.id"
             >
-                <FeedItem v-bind:post="post" />  
+                <FeedItem v-bind:post="post" @post-deleted="handlePostDelete" />  
             </div>
         </div>
 
@@ -107,7 +107,6 @@ export default {
             handler() {
                 this.getFeed();
             },
-            // deep: true, Added by Stein, I didn't need it, idk why
             immediate: true
         }
     },
@@ -182,7 +181,11 @@ export default {
             this.userStore.removeToken()
 
             this.$router.push('/login')     // Send to login page
-        }
+        },
+
+        handlePostDelete(id) {
+            this.posts = this.posts.filter(post => post.id !== id)
+        },
     }
 }
 </script>

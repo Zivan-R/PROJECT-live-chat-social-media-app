@@ -72,19 +72,21 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',     # New
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'chat', # new
     'search',   # new
     'post',     # new
     'account',  # new
     'rest_framework',   # New
     'rest_framework_simplejwt', # New
     'corsheaders',   # New
-    'channels',     # New
+    
     
 ]
 
