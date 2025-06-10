@@ -1,4 +1,6 @@
-### Note: This is an old version, without the live chat... Later versions have been lost. The app is being rewritten and migrated to a microservices architecture
+### Note: 
+- The readme is being rewritten to include screenshots and setup instructions
+- This app is being rewritten into a Microservices architecture with it's own full DevOps workflow
 
 # PROJECT: Social media app with a live chat [ENG/FR]
 
