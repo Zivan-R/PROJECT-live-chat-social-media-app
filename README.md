@@ -1,4 +1,4 @@
-### Note: 
+### Notes: 
 - The readme is being rewritten to include screenshots and setup instructions
 - This app is being rewritten into a Microservices architecture with it's own full DevOps workflow
 
