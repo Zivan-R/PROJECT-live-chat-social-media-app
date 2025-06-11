@@ -1,5 +1,5 @@
 ### Notes: 
-- The readme is being rewritten to include screenshots and setup instructions
+- The readme is being on updated to include screenshots and setup instructions
 - This app is being rewritten into a Microservices architecture with it's own full DevOps workflow
 
 # PROJECT: Social media app with a live chat [ENG/FR]
