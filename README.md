@@ -21,7 +21,7 @@
 ![post search](screenshots/search-post.jpg)
   
 **Live chat / Chat en direct**  
-![live chat](screenshots/)
+![live chat](screenshots/live-chat.jpg)
   
 ## Tech Stack:
 ### Front end
