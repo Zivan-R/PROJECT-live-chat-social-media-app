@@ -18,7 +18,7 @@
 ![user search](screenshots/search-toto.jpg)
   
 **Dynamic post search / Recherche dynamique de posts** 
-![post search](screenshots/)
+![post search](screenshots/search-post.jpg)
   
 **Live chat / Chat en direct**  
 ![live chat](screenshots/)
