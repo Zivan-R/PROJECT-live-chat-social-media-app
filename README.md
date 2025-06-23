@@ -9,7 +9,7 @@
 ![Welcome page](screenshots/welcome.jpg)
 
 **Personal Wall / Espace personnel**  
-![personal wall](screenshots/)
+![personal wall](screenshots/perso-wall.jpg)
   
 **You can comment and like status / Possibilité d'aimer et commenter un statut** 
 ![comment and like status](screenshots/status-com-like.jpg)
