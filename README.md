@@ -1,6 +1,24 @@
-### Notes: 
+## Notes: 
 - The readme is being on updated to include screenshots and setup instructions
 - This app is being rewritten into a Microservices architecture with it's own full DevOps workflow
+---
+![Welcome page](screenshots/welcome.jpg)
+
+### Personal Wall / Espace personnel  
+![Personal wall](screenshots/)
+
+### You can comment and like status / Possibilité d'aimer et commenter un statut 
+![](screenshots/)
+
+### Dynamic user search / Recherche dynamique d'utilisateurs
+![](screenshots/)
+
+### Dynamic post search / Recherche dynamique de posts 
+![](screenshots/)
+
+### Live chat  
+![](screenshots/)
+
 
 # PROJECT: Social media app with a live chat [ENG/FR]
 
