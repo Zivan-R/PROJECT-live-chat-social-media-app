@@ -15,7 +15,7 @@
 ![comment and like status](screenshots/status-com-like.jpg)
   
 **Dynamic user search / Recherche dynamique d'utilisateurs**
-![user search](screenshots/)
+![user search](screenshots/search-toto.jpg)
   
 **Dynamic post search / Recherche dynamique de posts** 
 ![post search](screenshots/)
