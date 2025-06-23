@@ -1,14 +1,18 @@
 ## Notes: 
 - The readme is being on updated to include screenshots and setup instructions
 - This app is being rewritten into a Microservices architecture with it's own full DevOps workflow
+  
 ---
+  
+# PROJECT: Social media app with a live chat [ENG/FR]
+
 ![Welcome page](screenshots/welcome.jpg)
 
 **Personal Wall / Espace personnel**  
 ![personal wall](screenshots/)
   
 **You can comment and like status / Possibilité d'aimer et commenter un statut** 
-![comment and like status](screenshots/)
+![comment and like status](screenshots/status-com-like.jpg)
   
 **Dynamic user search / Recherche dynamique d'utilisateurs**
 ![user search](screenshots/)
@@ -18,10 +22,7 @@
   
 **Live chat / Chat en direct**  
 ![live chat](screenshots/)
-
-
-# PROJECT: Social media app with a live chat [ENG/FR]
-
+  
 ## Tech Stack:
 ### Front end
 - Vue3 Framework
