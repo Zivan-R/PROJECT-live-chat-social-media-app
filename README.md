@@ -4,20 +4,20 @@
 ---
 ![Welcome page](screenshots/welcome.jpg)
 
-### Personal Wall / Espace personnel  
-![Personal wall](screenshots/)
-
-### You can comment and like status / Possibilité d'aimer et commenter un statut 
-![](screenshots/)
-
-### Dynamic user search / Recherche dynamique d'utilisateurs
-![](screenshots/)
-
-### Dynamic post search / Recherche dynamique de posts 
-![](screenshots/)
-
-### Live chat  
-![](screenshots/)
+**Personal Wall / Espace personnel**  
+![personal wall](screenshots/)
+  
+**You can comment and like status / Possibilité d'aimer et commenter un statut** 
+![comment and like status](screenshots/)
+  
+**Dynamic user search / Recherche dynamique d'utilisateurs**
+![user search](screenshots/)
+  
+**Dynamic post search / Recherche dynamique de posts** 
+![post search](screenshots/)
+  
+**Live chat / Chat en direct**  
+![live chat](screenshots/)
 
 
 # PROJECT: Social media app with a live chat [ENG/FR]
