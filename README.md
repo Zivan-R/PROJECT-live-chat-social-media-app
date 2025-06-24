@@ -1,5 +1,4 @@
 ## Notes: 
-- The readme is being on updated to include screenshots and setup instructions
 - This app is being rewritten into a Microservices architecture with it's own full DevOps workflow
   
 ---
@@ -22,7 +21,22 @@
   
 **Live chat / Chat en direct**  
 ![live chat](screenshots/live-chat.jpg)
-  
+
+# Try it locally on your computer! / Essayez l'appli sur votre ordinateur!
+**Prerequisites Check / Vérification des prérequis**
+- Ensure the following are installed / Vérifiez que les outils suivants sont bien installés:
+  - Python ( https://www.python.org/downloads/ )
+  - Node.js & npm ( https://nodejs.org/ )
+
+Check versions:
+```bash
+python --version
+pip --version
+node --version
+npm --version
+```
+
+**Bash setup guide / Guide d'installation Bash (Linux/macOS)**
 ## Tech Stack:
 ### Front end
 - Vue3 Framework
