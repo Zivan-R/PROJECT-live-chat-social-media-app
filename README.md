@@ -22,7 +22,7 @@
 **Live chat / Chat en direct**  
 ![live chat](screenshots/live-chat.jpg)
 
-# Try it locally on your computer! / Essayez l'appli sur votre ordinateur!
+## Try it on your computer! / Essayez l'appli sur votre ordinateur!
 **Prerequisites Check / Vérification des prérequis**
 - Ensure the following are installed / Vérifiez que les outils suivants sont bien installés:
   - Python ( https://www.python.org/downloads/ )
@@ -35,8 +35,18 @@ pip --version
 node --version
 npm --version
 ```
-
+  
+**Get the repo / Récupérer le repo**
+```bash
+git clone https://github.com/Zivan-R/PROJECT-live-chat-social-media-app.git
+cd PROJECT-live-chat-social-media-app
+```
+To make things easier / Pour simplifier le processus:  
+Use two different Terminal instances, one for the Frontend, and one for the Backend  
+Utilisez deux instances différentes du Terminal, une pour le Frontend, une pour le Backend
+  
 **Bash setup guide / Guide d'installation Bash (Linux/macOS)**
+Frontend Setup:
 ## Tech Stack:
 ### Front end
 - Vue3 Framework
