@@ -22,6 +22,7 @@
 **Live chat / Chat en direct**  
 ![live chat](screenshots/live-chat.jpg)
 
+  
 ## Try it on your computer! / Essayez l'appli sur votre ordinateur!
 **Prerequisites Check / Vérification des prérequis**
 - Ensure the following are installed / Vérifiez que les outils suivants sont bien installés:
@@ -87,6 +88,7 @@ To make things easier / Pour simplifier le processus:
   daphne -p 8000 django_backend.asgi:application
   ```
 
+  
 ## Tech Stack:
 ### Front end
 - Vue3 Framework
