@@ -57,8 +57,9 @@ To make things easier / Pour simplifier le processus:
   npm intall
   npm run dev
 
-  # Check the output and copy paste the URL after "Local:" (ex: http://localhost:5173/) into your browser
-  # Récupérer l'adresse URL dans l'output, après "Local:" (ex: http://localhost:5173/) et la coller dans votre navigateur
+  # Check the output and copy paste the URL after "Local:" into your browser
+  # Récupérer l'adresse URL dans l'output, après "Local:" et la coller dans votre navigateur
+  # (ex: http://localhost:5173/) 
   ```
 
 - Backend Setup
