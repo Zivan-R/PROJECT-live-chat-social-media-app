@@ -20,8 +20,10 @@
 ![post search](screenshots/search-post.jpg)
   
 **Live chat / Chat en direct**  
-![live chat](screenshots/live-chat.jpg)
-
+![live chat](screenshots/live-chat.jpg)  
+  
+  
+  
   
 ## Try it on your computer! / Essayez l'appli sur votre ordinateur!
 **Prerequisites Check / Vérification des prérequis**
@@ -86,8 +88,10 @@ To make things easier / Pour simplifier le processus:
   .\.venv\Scripts\Activate.ps1
   pip install -r requirements.txt
   daphne -p 8000 django_backend.asgi:application
-  ```
-
+  ```  
+  
+  
+  
   
 ## Tech Stack:
 ### Front end
