@@ -49,11 +49,44 @@ To make things easier / Pour simplifier le processus:
   
 **Bash setup guide / Guide d'installation Bash (Linux/macOS)**
 - Frontend Setup:
-  - ```bash
-    cd vue_frontend/
-    npm intall
-    npm run dev
-    ``` 
+  ```bash
+  cd vue_frontend/
+  npm intall
+  npm run dev
+
+  # Check the output and copy paste the URL after "Local:" (ex: http://localhost:5173/) into your browser
+  # Récupérer l'adresse URL dans l'output, après "Local:" (ex: http://localhost:5173/) et la coller dans votre navigateur
+  ```
+
+- Backend Setup
+  ```bash
+  cd django_backend
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install -r requirements.txt
+  daphne -p 8000 django_backend.asgi:application
+  ```
+
+**Powershell setup guide / Guide d'installation Powershell (Windows)**
+- Frontend Setup:
+  ```bash
+  cd vue_frontend/
+  npm intall
+  npm run dev
+
+  # Check the output and copy paste the URL after "Local:" (ex: http://localhost:5173/) into your browser
+  # Récupérer l'adresse URL dans l'output, après "Local:" (ex: http://localhost:5173/) et la coller dans votre navigateur
+  ```
+
+- Backend Setup
+  ```bash
+  cd django_backend
+  python -m venv .venv
+  .\.venv\Scripts\Activate.ps1
+  pip install -r requirements.txt
+  daphne -p 8000 django_backend.asgi:application
+  ```
+
 ## Tech Stack:
 ### Front end
 - Vue3 Framework
