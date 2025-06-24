@@ -41,12 +41,19 @@ npm --version
 git clone https://github.com/Zivan-R/PROJECT-live-chat-social-media-app.git
 cd PROJECT-live-chat-social-media-app
 ```
+  
 To make things easier / Pour simplifier le processus:  
-  Use two different Terminal instances, one for the Frontend, and one for the Backend  
-  Utilisez deux instances différentes du Terminal, une pour le Frontend, une pour le Backend
+  
+(Eng) Use two different Terminal instances, one for the Frontend, and one for the Backend  
+(Fr) Utilisez deux instances différentes du Terminal, une pour le Frontend, une pour le Backend
   
 **Bash setup guide / Guide d'installation Bash (Linux/macOS)**
-Frontend Setup:
+- Frontend Setup:
+  - ```bash
+    cd vue_frontend/
+    npm intall
+    npm run dev
+    ``` 
 ## Tech Stack:
 ### Front end
 - Vue3 Framework
