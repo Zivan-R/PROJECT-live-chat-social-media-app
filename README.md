@@ -112,7 +112,17 @@ To make things easier / Pour simplifier le processus:
 This project was made in the context of the 3 months long training "Formation Professionnalisante Python"
 provided by *M2i Formation*
 It was made in 3 weeks as a final project.
-
+  
+- Features:
+     - Account creation
+     - Authentication
+     - REST API
+     - A friend system
+     - A personnal "wall" accessible to other users
+     - The possibility of commenting posts + liking posts and comments
+     - A main live chat (a tribute to the good old days of IRC)
+     - And of course all of this is recorded in a well organized database. (SQLite for convenience)
+  
 Logo Credit: Full credit to ***Nicolas Robouam*** for the logo design. 
 The logo is entirely his work, and I claim no ownership or rights over it.
 
