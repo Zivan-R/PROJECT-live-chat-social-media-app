@@ -138,7 +138,7 @@ Il a été développé en 3 semaines en tant que projet final.
        - Migration vers une architecture microservices
        - Transformation vers un projet full DevOps
       
-    - Fonctionnalités :
+- Fonctionnalités :
        - Création de compte
        - Authentification
        - API REST
