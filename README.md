@@ -134,19 +134,19 @@ Ce projet a été réalisé dans le cadre de la formation intensive de 3 mois «
 dispensée par M2i Formation.
 Il a été développé en 3 semaines en tant que projet final.
   
-- Mises à jours à venir:  
-       - Migration vers une architecture microservices
-       - Transformation vers un projet full DevOps
-      
+- Mises à jours à venir :  
+  - Migration vers une architecture microservices
+  - Transformation vers un projet full DevOps  
+
 - Fonctionnalités :
-       - Création de compte
-       - Authentification
-       - API REST
-       - Système d'amis
-       - Un "Mur" personnel accessible aux autres utilisateurs
-       - Possibilité de commenter des publications + liker les publications et commentaires
-       - Un chat principal en direct (hommage aux bons vieux jours de l'IRC)
-       - Et bien sûr, tout cela est enregistré dans une base de données bien organisée (SQLite pour la simplicité)
+  - Création de compte
+  - Authentification
+  - API REST
+  - Système d'amis
+    - Un "Mur" personnel accessible aux autres utilisateurs
+    - Possibilité de commenter des publications + liker les publications et commentaires
+    - Un chat principal en direct (hommage aux bons vieux jours de l'IRC)
+    - Et bien sûr, tout cela est enregistré dans une base de données bien organisée (SQLite pour la simplicité)
   
 Crédit du logo: Tout le crédit revient à ***Nicolas Robouam*** pour la conception du logo. 
 Le logo est entièrement son œuvre, et je ne revendique aucun droit ni aucune propriété à son sujet.
