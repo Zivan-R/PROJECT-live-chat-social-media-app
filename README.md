@@ -112,6 +112,10 @@ To make things easier / Pour simplifier le processus:
 This project was made in the context of the 3 months long training "Formation Professionnalisante Python"
 provided by *M2i Formation*
 It was made in 3 weeks as a final project.
+
+- Updates to come:  
+     - Migration into a microservices architecture
+     - Transformation into a full DevOps project
   
 - Features:
      - Account creation
