@@ -143,10 +143,10 @@ Il a été développé en 3 semaines en tant que projet final.
   - Authentification
   - API REST
   - Système d'amis
-    - Un "Mur" personnel accessible aux autres utilisateurs
-    - Possibilité de commenter des publications + liker les publications et commentaires
-    - Un chat principal en direct (hommage aux bons vieux jours de l'IRC)
-    - Et bien sûr, tout cela est enregistré dans une base de données bien organisée (SQLite pour la simplicité)
+  - Un "Mur" personnel accessible aux autres utilisateurs
+  - Possibilité de commenter des publications + liker les publications et commentaires
+  - Un chat principal en direct (hommage aux bons vieux jours de l'IRC)
+  - Et bien sûr, tout cela est enregistré dans une base de données bien organisée (SQLite pour la simplicité)
   
 Crédit du logo: Tout le crédit revient à ***Nicolas Robouam*** pour la conception du logo. 
 Le logo est entièrement son œuvre, et je ne revendique aucun droit ni aucune propriété à son sujet.
